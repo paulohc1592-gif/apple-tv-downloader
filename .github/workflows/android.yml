@@ -18,12 +18,14 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
+    # Esta ação oficial configura o Gradle automaticamente de forma segura
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v3
+
+    # Compila o app usando o comando direto instalado pelo servidor
     - name: Build with Gradle
-      run: |
-        gradle wrapper --gradle-version 8.0
-        chmod +x gradlew
-        ./gradlew assembleDebug --no-daemon
-        
+      run: gradle assembleDebug --no-daemon
+
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
