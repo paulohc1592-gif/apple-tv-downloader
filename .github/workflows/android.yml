@@ -18,11 +18,11 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    # Esta ação oficial configura o Gradle automaticamente de forma segura
+    # Essa ação oficial do Gradle configura tudo automaticamente sem precisar de arquivos locais
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3
 
-    # Compila o app usando o comando direto instalado pelo servidor
+    # Compila o aplicativo diretamente
     - name: Build with Gradle
       run: gradle assembleDebug --no-daemon
 
